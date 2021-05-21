@@ -3,7 +3,7 @@ package com.asa.wanandroid.http
 object HttpConstants {
 
 
-    const val BaseUrl = ""
+    const val BaseUrl = "https://www.wanandroid.com/"
 
 
 }
