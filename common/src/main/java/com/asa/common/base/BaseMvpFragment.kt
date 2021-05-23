@@ -1,4 +1,6 @@
 package com.asa.common.base
 
-class BaseMvpFragment {
+abstract class BaseMvpFragment<in V: IView,P :IPresenter<V>>:BaseFragment(),IView {
+
+
 }

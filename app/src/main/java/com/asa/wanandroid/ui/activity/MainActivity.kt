@@ -1,13 +1,19 @@
-package com.asa.wanandroid
+package com.asa.wanandroid.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.asa.common.base.BaseActivity
+import com.asa.common.base.BaseMvpActivity
+import com.asa.wanandroid.R
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseMvpActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
+
 
     }
 

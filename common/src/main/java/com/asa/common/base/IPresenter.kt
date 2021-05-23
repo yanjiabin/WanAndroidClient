@@ -1,4 +1,4 @@
 package com.asa.common.base
 
-interface IPresenter {
+interface IPresenter<in V:IView> {
 }
