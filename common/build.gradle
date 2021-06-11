@@ -39,5 +39,6 @@ dependencies {
     api rootProject.ext.supportLibs
     api rootProject.ext.networkLibs
     api rootProject.ext.commonLibs
+    api rootProject.ext.rxJavaLibs
 
 }

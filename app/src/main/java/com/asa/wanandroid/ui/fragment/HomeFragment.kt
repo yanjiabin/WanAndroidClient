@@ -1,12 +1,11 @@
 package com.asa.wanandroid.ui.fragment
 
 import android.view.View
-import com.asa.common.base.BaseFragment
-import com.asa.common.base.BaseMvpFragment
+import com.asa.wanandroid.base.BaseMvpFragment
 import com.asa.wanandroid.R
 import com.asa.wanandroid.mvp.contract.HomeContract
-import com.asa.wanandroid.mvp.model.ArticleResponseBody
-import com.asa.wanandroid.mvp.model.Banner
+import com.asa.wanandroid.mvp.model.bean.ArticleResponseBody
+import com.asa.wanandroid.mvp.model.bean.Banner
 
 /**
  * create By：anderson
@@ -50,5 +49,9 @@ class HomeFragment : BaseMvpFragment<HomeContract.View, HomeContract.Presenter>(
 
     override fun lazyLoad() {
 
+    }
+
+    override fun createPresenter(): HomeContract.Presenter {
+//        return null
     }
 }

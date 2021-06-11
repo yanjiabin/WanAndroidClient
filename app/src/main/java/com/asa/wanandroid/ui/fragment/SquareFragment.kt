@@ -1,10 +1,10 @@
 package com.asa.wanandroid.ui.fragment
 
 import android.view.View
-import com.asa.common.base.BaseMvpFragment
+import com.asa.wanandroid.base.BaseMvpFragment
 import com.asa.wanandroid.R
 import com.asa.wanandroid.mvp.contract.SquareContract
-import com.asa.wanandroid.mvp.model.ArticleResponseBody
+import com.asa.wanandroid.mvp.model.bean.ArticleResponseBody
 
 /**
  * create By：anderson

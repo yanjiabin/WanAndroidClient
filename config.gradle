@@ -32,24 +32,34 @@ ext {
 
     ]
 
+    rxJava = [
+            "rxJava"   : "io.reactivex.rxjava2:rxjava:${dependVersion.rxJava}",
+            "rxAndroid": "io.reactivex.rxjava2:rxandroid:${dependVersion.rxAndroid}",
+            "rxKotlin" : "io.reactivex.rxjava2:rxkotlin:${dependVersion.rxKotlin}",
+            "anko"     : "org.jetbrains.anko:anko:${dependVersion.anko}"
+    ]
+
     retrofit = [
             "retrofit"                : "com.squareup.retrofit2:retrofit:${dependVersion.retrofitSdkVersion}",
             "retrofitConverterGson"   : "com.squareup.retrofit2:converter-gson:${dependVersion.retrofitSdkVersion}",
             "retrofitAdapterRxjava2"  : "com.squareup.retrofit2:adapter-rxjava2:${dependVersion.retrofitSdkVersion}",
             "okhttp3LoggerInterceptor": 'com.squareup.okhttp3:logging-interceptor:3.11.0',
             "retrofitConverterMoshi"  : 'com.squareup.retrofit2:converter-moshi:2.4.0',
-            "retrofitKotlinMoshi"     : "com.squareup.moshi:moshi-kotlin:1.7.0"
+            "retrofitKotlinMoshi"     : "com.squareup.moshi:moshi-kotlin:1.7.0",
+            "reactiveStreams"         : "org.reactivestreams:reactive-streams:1.0.2"
     ]
 
     commonDeps = [
             "multidex"              : 'com.android.support:multidex:1.0.3',
             "flow-layout"           : 'com.hyman:flowlayout-lib:1.1.2',
             "eventbus"              : 'org.greenrobot:eventbus:3.2.0',
+            "logger"                : 'com.orhanobut:logger:2.1.1',
     ]
 
 
     supportLibs = supportDeps.values()
     networkLibs = retrofit.values()
+    rxJavaLibs = rxJava.values()
     commonLibs = commonDeps.values()
 //    rxJavaLibs = rxJava.values()
 

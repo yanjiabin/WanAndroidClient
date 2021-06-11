@@ -1,4 +1,4 @@
-package com.asa.common.base
+package com.asa.wanandroid.base
 
 import android.os.Bundle
 import android.view.LayoutInflater

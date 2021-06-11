@@ -1,4 +1,4 @@
-package com.asa.wanandroid.mvp.model
+package com.asa.wanandroid.mvp.model.bean
 
 /**
  * create By：anderson

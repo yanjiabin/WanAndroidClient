@@ -1,9 +1,9 @@
 package com.asa.wanandroid.mvp.contract
 
-import com.asa.common.base.IModel
-import com.asa.common.base.IPresenter
-import com.asa.common.base.IView
-import com.asa.wanandroid.mvp.model.HttpResult
+import com.asa.wanandroid.base.IModel
+import com.asa.wanandroid.base.IPresenter
+import com.asa.wanandroid.base.IView
+import com.asa.wanandroid.mvp.model.bean.HttpResult
 import io.reactivex.Observable
 
 /**

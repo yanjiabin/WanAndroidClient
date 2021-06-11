@@ -1,0 +1,6 @@
+
+1.BaseActivity  负责定义子类抽象函数
+比如initView  intiLayoutRes eventBus等等
+
+2.BaseMvpActivity 负责定义<V,P> --BaseActivity  iView
+实现IView 是为了让子类继承也是IView的子类

@@ -1,9 +1,9 @@
 package com.asa.wanandroid.mvp.contract
 
-import com.asa.wanandroid.mvp.model.Article
-import com.asa.wanandroid.mvp.model.ArticleResponseBody
-import com.asa.wanandroid.mvp.model.Banner
-import com.asa.wanandroid.mvp.model.HttpResult
+import com.asa.wanandroid.mvp.model.bean.Article
+import com.asa.wanandroid.mvp.model.bean.ArticleResponseBody
+import com.asa.wanandroid.mvp.model.bean.Banner
+import com.asa.wanandroid.mvp.model.bean.HttpResult
 import io.reactivex.Observable
 
 /**
