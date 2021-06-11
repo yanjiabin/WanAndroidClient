@@ -44,8 +44,8 @@ class HomeFragment : BaseMvpFragment<HomeContract.View, HomeContract.Presenter>(
 
 
     override fun initView(view: View) {
-
     }
+
 
     override fun lazyLoad() {
 
