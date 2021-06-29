@@ -5,6 +5,7 @@ import com.asa.wanandroid.base.BaseMvpFragment
 import com.asa.wanandroid.R
 import com.asa.wanandroid.mvp.contract.SquareContract
 import com.asa.wanandroid.mvp.model.bean.ArticleResponseBody
+import com.asa.wanandroid.mvp.presenter.SquaretPresenter
 
 /**
  * create By：anderson
@@ -41,5 +42,13 @@ class SquareFragment:BaseMvpFragment<SquareContract.View,SquareContract.Presente
 
     override fun showCancelCollectSuccess(success: Boolean) {
         
+    }
+
+    override fun createPresenter(): SquareContract.Presenter {
+        return SquaretPresenter()
+    }
+
+    override fun userEventBus(): Boolean {
+        return false
     }
 }

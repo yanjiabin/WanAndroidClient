@@ -24,7 +24,7 @@ abstract class BaseFragment : Fragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater?.inflate(attachlayoutRes(), null)
+        return inflater.inflate(attachlayoutRes(), null)
     }
 
 

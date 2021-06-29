@@ -5,6 +5,7 @@ import com.asa.wanandroid.base.BaseMvpFragment
 import com.asa.wanandroid.R
 import com.asa.wanandroid.mvp.contract.WeChatContract
 import com.asa.wanandroid.mvp.model.bean.WXChapterBean
+import com.asa.wanandroid.mvp.presenter.WeChatPresenter
 
 /**
  * create By：anderson
@@ -32,5 +33,13 @@ class WeChatFragment:BaseMvpFragment<WeChatContract.View,WeChatContract.Presente
 
     override fun showWXChapters(chapters: MutableList<WXChapterBean>) {
         
+    }
+
+    override fun createPresenter(): WeChatContract.Presenter {
+        return WeChatPresenter()
+    }
+
+    override fun userEventBus(): Boolean {
+        return false
     }
 }

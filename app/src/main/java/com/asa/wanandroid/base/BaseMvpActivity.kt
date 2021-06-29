@@ -4,7 +4,7 @@ import com.asa.wanandroid.ext.showToast
 
 abstract class BaseMvpActivity<in V:IView,P:IPresenter<V>>:BaseActivity(),IView {
 
-    protected var mPresenter:P?=null
+    var mPresenter:P?=null
 
 
     abstract fun createPresenter():P

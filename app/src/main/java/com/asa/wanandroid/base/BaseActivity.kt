@@ -144,7 +144,7 @@ abstract class BaseActivity :AppCompatActivity(){
         // 1.第一次进入界面会导致 start() 方法走两次
         // 2.后台切换到前台时，会调用 start() 方法执行相应的操作
         // 此处不应该调用，删掉，修改 #13
-        // checkNetwork(hasNetwork)
+//         checkNetwork(hasNetwork)
 
     }
 
