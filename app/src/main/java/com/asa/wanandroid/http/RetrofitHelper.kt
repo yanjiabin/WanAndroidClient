@@ -21,11 +21,11 @@ object RetrofitHelper {
     private var retrofit: Retrofit? = null
 
 
-    val serviceApi:ApiService by lazy { retrofit!!.create(ApiService::class.java) }
+    val serviceApi:ApiService by lazy { getRetrofit().create(ApiService::class.java) }
 
     private fun getRetrofit(): Retrofit {
         if (retrofit == null){
-            Retrofit.Builder()
+            retrofit = Retrofit.Builder()
                 .baseUrl(HttpConstants.BaseUrl)
                 .client(getOkHttpClient())
                 .addConverterFactory(MoshiConverterFactory.create())

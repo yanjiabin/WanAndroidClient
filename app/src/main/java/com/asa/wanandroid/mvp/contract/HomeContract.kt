@@ -13,15 +13,15 @@ import io.reactivex.Observable
  */
 interface HomeContract {
 
-    interface View:CommonContract.View{
+    interface View : CommonContract.View {
 
         fun scrollToTop()
 
         fun setBanner(banners: List<Banner>)
 
         fun setArticles(articles: ArticleResponseBody)
-    }
 
+    }
 
     interface Presenter : CommonContract.Presenter<View> {
 
@@ -33,9 +33,6 @@ interface HomeContract {
 
     }
 
-
-
-
     interface Model : CommonContract.Model {
 
         fun requestBanner(): Observable<HttpResult<List<Banner>>>
@@ -44,6 +41,5 @@ interface HomeContract {
 
         fun requestArticles(num: Int): Observable<HttpResult<ArticleResponseBody>>
     }
-
 
 }

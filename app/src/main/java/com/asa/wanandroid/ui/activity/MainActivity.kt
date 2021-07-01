@@ -1,5 +1,8 @@
 package com.asa.wanandroid.ui.activity
 
+import android.content.SyncContext
+import android.content.SyncStats
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.fragment.app.FragmentTransaction
 import com.asa.wanandroid.base.BaseMvpActivity
 import com.asa.wanandroid.R
@@ -13,8 +16,10 @@ import com.asa.wanandroid.ui.fragment.WeChatFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomnavigation.LabelVisibilityMode
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.toolbar.*
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
+import org.jetbrains.anko.support.v4.drawerLayout
 
 class MainActivity : BaseMvpActivity<MainContract.View,MainContract.Presenter>(),MainContract.View {
 
@@ -36,6 +41,11 @@ class MainActivity : BaseMvpActivity<MainContract.View,MainContract.Presenter>()
 
     override fun initView() {
         super.initView()
+        toolbar.run {
+            title ="玩android"
+            setSupportActionBar(this)
+        }
+
         bottom_navigation.run {
             // 以前使用 BottomNavigationViewHelper.disableShiftMode(this) 方法来设置底部图标和字体都显示并去掉点击动画
             // 升级到 28.0.0 之后，官方重构了 BottomNavigationView ，目前可以使用 labelVisibilityMode = 1 来替代
@@ -44,9 +54,30 @@ class MainActivity : BaseMvpActivity<MainContract.View,MainContract.Presenter>()
             setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
         }
 
-        showFragment(index)
+        iniDrawerLayout()
 
+        initNavView()
+
+        showFragment(index)
     }
+
+    private fun initNavView() {
+//        nav_view.apply {
+//
+//
+//        }
+    }
+
+    private fun iniDrawerLayout() {
+        drawer_layout.apply {
+            ActionBarDrawerToggle(this@MainActivity,
+            this,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close).apply {
+                addDrawerListener(this)
+                syncState()
+            }
+        }
+    }
+
     override fun start() {
 
     }
