@@ -1,11 +1,13 @@
 package com.asa.wanandroid.base
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
+import com.asa.wanandroid.ui.view.MultipleStatusView
 import org.greenrobot.eventbus.EventBus
 
 abstract class BaseFragment : Fragment() {
@@ -21,6 +23,8 @@ abstract class BaseFragment : Fragment() {
      */
     private var isViewPrepare  = false
 
+    protected var  mLayoutStatusView:MultipleStatusView?=null
+
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -33,12 +37,13 @@ abstract class BaseFragment : Fragment() {
         if (userEventBus()){
             EventBus.getDefault().register(this)
         }
-
+        isViewPrepare = true
         initView(view)
         lazyLoadDataIfPrepare()
     }
 
     private fun lazyLoadDataIfPrepare(){
+        Log.e("日志", "lazyLoadDataIfPrepare: ")
         if (userVisibleHint && isViewPrepare && !hasLoadData){
             lazyLoad()
             hasLoadData = true
