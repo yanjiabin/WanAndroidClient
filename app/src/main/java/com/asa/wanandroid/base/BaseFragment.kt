@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
+import com.asa.common.constants.Constant
+import com.asa.common.utils.Preference
 import com.asa.wanandroid.ui.view.MultipleStatusView
 import org.greenrobot.eventbus.EventBus
 
@@ -25,7 +27,7 @@ abstract class BaseFragment : Fragment() {
 
     protected var  mLayoutStatusView:MultipleStatusView?=null
 
-
+    protected var isLogin:Boolean by Preference(Constant.LOGIN_KEY,false)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(attachlayoutRes(), null)

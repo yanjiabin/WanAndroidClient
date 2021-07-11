@@ -16,10 +16,10 @@ import com.chad.library.adapter.base.BaseViewHolder
  * on 2021/7/10
  * desc:
  */
-class HomeAdapter(private val context:Context?,datas:MutableList<Article>):BaseQuickAdapter<Article,BaseViewHolder>(
+class HomeAdapter(private val context: Context?,datas:MutableList<Article>):BaseQuickAdapter<Article, BaseViewHolder>(
     R.layout.item_home_list,datas){
 
-    override fun convert(helper: BaseViewHolder?, item: Article?) {
+    override fun convert(helper: BaseViewHolder, item: Article) {
         item?:return
         helper?:return
         val authorStr = if (item.author.isNotEmpty()) item.author else item.shareUser
@@ -27,6 +27,7 @@ class HomeAdapter(private val context:Context?,datas:MutableList<Article>):BaseQ
             .setText(R.id.tv_article_author,authorStr)
             .setText(R.id.tv_article_date,item.niceDate)
             .setImageResource(R.id.iv_like, if (item.collect) R.drawable.ic_like else R.drawable.ic_like_not)
+            .addOnClickListener(R.id.iv_like)
         when{
             item.superChapterName.isNotEmpty() and item.chapterName.isNotEmpty() ->
                 "${item.superChapterName}/${item.chapterName}"

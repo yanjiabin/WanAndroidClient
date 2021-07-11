@@ -6,6 +6,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.fragment.app.FragmentTransaction
 import com.asa.wanandroid.base.BaseMvpActivity
 import com.asa.wanandroid.R
+import com.asa.wanandroid.event.LoginEvent
 import com.asa.wanandroid.event.RefreshHomeEvent
 import com.asa.wanandroid.mvp.contract.MainContract
 import com.asa.wanandroid.mvp.model.bean.UserInfoBody
@@ -39,28 +40,6 @@ class MainActivity : BaseMvpActivity<MainContract.View,MainContract.Presenter>()
 
     private var index = FRAGMENT_HOME
 
-    override fun initView() {
-        super.initView()
-        toolbar.run {
-            title ="玩android"
-            setSupportActionBar(this)
-        }
-
-        bottom_navigation.run {
-            // 以前使用 BottomNavigationViewHelper.disableShiftMode(this) 方法来设置底部图标和字体都显示并去掉点击动画
-            // 升级到 28.0.0 之后，官方重构了 BottomNavigationView ，目前可以使用 labelVisibilityMode = 1 来替代
-            // BottomNavigationViewHelper.disableShiftMode(this)
-            labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_LABELED
-            setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
-        }
-
-        iniDrawerLayout()
-
-        initNavView()
-
-        showFragment(index)
-    }
-
     private fun initNavView() {
 //        nav_view.apply {
 //
@@ -79,7 +58,24 @@ class MainActivity : BaseMvpActivity<MainContract.View,MainContract.Presenter>()
     }
 
     override fun start() {
+        toolbar.run {
+            title ="玩android"
+            setSupportActionBar(this)
+        }
 
+        bottom_navigation.run {
+            // 以前使用 BottomNavigationViewHelper.disableShiftMode(this) 方法来设置底部图标和字体都显示并去掉点击动画
+            // 升级到 28.0.0 之后，官方重构了 BottomNavigationView ，目前可以使用 labelVisibilityMode = 1 来替代
+            // BottomNavigationViewHelper.disableShiftMode(this)
+            labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_LABELED
+            setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
+        }
+
+        iniDrawerLayout()
+
+        initNavView()
+
+        showFragment(index)
     }
 
     override fun initData() {
@@ -141,7 +137,7 @@ class MainActivity : BaseMvpActivity<MainContract.View,MainContract.Presenter>()
         when (index) {
             FRAGMENT_HOME -> {
                 if (mHomeFragment == null){
-                    mHomeFragment = HomeFragment()
+                    mHomeFragment = HomeFragment.getInstance()
                     beginTransaction.add(R.id.container,mHomeFragment!!,"home")
                 } else{
                     beginTransaction.show(mHomeFragment!!)
@@ -149,7 +145,7 @@ class MainActivity : BaseMvpActivity<MainContract.View,MainContract.Presenter>()
             }
             FRAGMENT_SQUARE->{
                 if (mSquareFragment == null){
-                    mSquareFragment = SquareFragment()
+                    mSquareFragment = SquareFragment.getInstance()
                     beginTransaction.add(R.id.container,mSquareFragment!!,"square")
                 } else{
                     beginTransaction.show(mSquareFragment!!)
@@ -176,7 +172,25 @@ class MainActivity : BaseMvpActivity<MainContract.View,MainContract.Presenter>()
         mWechatFragment?.let { beginTransaction.hide(it) }
     }
 
-    override fun userEvent(): Boolean {
-        return false
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun loginEvent(event:LoginEvent){
+        if (event.isLogin) {
+//            nav_username?.text = username
+            nav_view.menu.findItem(R.id.nav_logout).isVisible = true
+            mHomeFragment?.lazyLoad()
+            mPresenter?.getUserInfo()
+        } else {
+//            nav_username?.text = resources.getString(R.string.go_login)
+            nav_view.menu.findItem(R.id.nav_logout).isVisible = false
+            mHomeFragment?.lazyLoad()
+            // 重置用户信息
+//            nav_user_id?.text = getString(R.string.nav_line_4)
+//            nav_user_grade?.text = getString(R.string.nav_line_2)
+//            nav_user_rank?.text = getString(R.string.nav_line_2)
+//            nav_score?.text = ""
+        }
     }
+
+
+
 }

@@ -2,9 +2,7 @@ package com.asa.wanandroid.http
 
 import com.asa.wanandroid.mvp.model.bean.*
 import io.reactivex.Observable
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface ApiService {
 
@@ -64,5 +62,16 @@ interface ApiService {
      */
     @GET("article/list/{pageNum}/json")
     fun getArticles(@Path("pageNum") pageNum: Int): Observable<HttpResult<ArticleResponseBody>>
+
+    /**
+     * 登录
+     * http://www.wanandroid.com/user/login
+     * @param username
+     * @param password
+     */
+    @POST("user/login")
+    @FormUrlEncoded
+    fun loginWanAndroid(@Field("username") username: String,
+                        @Field("password") password: String): Observable<HttpResult<LoginData>>
 
 }
