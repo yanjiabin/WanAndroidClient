@@ -74,4 +74,20 @@ interface ApiService {
     fun loginWanAndroid(@Field("username") username: String,
                         @Field("password") password: String): Observable<HttpResult<LoginData>>
 
+    /**
+     * 自己的分享的文章列表
+     * https://wanandroid.com/user/lg/private_articles/1/json
+     * @param page 页码 从1开始
+     */
+    @GET("user/lg/private_articles/{page}/json")
+    fun getShareList(@Path("page") page: Int): Observable<HttpResult<ShareResponseBody>>
+
+
+    /**
+     * 广场列表数据
+     * https://wanandroid.com/user_article/list/0/json
+     * @param page 页码拼接在url上从0开始
+     */
+    @GET("user_article/list/{page}/json")
+    fun getSquareList(@Path("page") page: Int): Observable<HttpResult<ArticleResponseBody>>
 }

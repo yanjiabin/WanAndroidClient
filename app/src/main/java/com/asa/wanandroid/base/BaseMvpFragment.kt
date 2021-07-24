@@ -1,9 +1,13 @@
 package com.asa.wanandroid.base
 
 import android.view.View
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.asa.wanandroid.ext.showToast
+import com.chad.library.adapter.base.BaseQuickAdapter
+import kotlinx.android.synthetic.main.fragment_refresh_layout.*
 
 abstract class BaseMvpFragment<in V: IView,P :IPresenter<V>>:BaseFragment(),IView {
+
 
 
     /**
@@ -12,6 +16,7 @@ abstract class BaseMvpFragment<in V: IView,P :IPresenter<V>>:BaseFragment(),IVie
     protected var mPresenter: P? = null
 
     protected abstract fun createPresenter(): P
+
 
     override fun initView(view: View) {
         mPresenter = createPresenter()
@@ -28,6 +33,7 @@ abstract class BaseMvpFragment<in V: IView,P :IPresenter<V>>:BaseFragment(),IVie
     }
 
     override fun hideLoading() {
+        swipeRefreshLayout?.isRefreshing = false
     }
 
     override fun showError(errorMsg: String) {
