@@ -22,6 +22,8 @@
             android:screenOrientation="behind"/>
         <activity android:name=".ui.activity.RegisterActivity"
             android:screenOrientation="behind"/>
+        <activity android:name=".ui.activity.ContentActivity"
+            android:screenOrientation="behind"/>
     </application>
 
 </manifest>

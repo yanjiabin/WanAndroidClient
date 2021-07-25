@@ -16,6 +16,7 @@ import com.asa.wanandroid.mvp.contract.SquareContract
 import com.asa.wanandroid.mvp.model.bean.Article
 import com.asa.wanandroid.mvp.model.bean.ArticleResponseBody
 import com.asa.wanandroid.mvp.presenter.SquaretPresenter
+import com.asa.wanandroid.ui.activity.ContentActivity
 import com.asa.wanandroid.ui.activity.LoginActivity
 import com.chad.library.adapter.base.BaseQuickAdapter
 import kotlinx.android.synthetic.main.fragment_refresh_layout.*
@@ -110,7 +111,7 @@ class SquareFragment : BaseMvpFragment<SquareContract.View, SquareContract.Prese
         BaseQuickAdapter.OnItemClickListener { adapter, view, position ->
             if (data.size != 0){
                 val itemData =data[position]
-//                ContentActivity.start(activity,itemData.id,itemData.title,itemData.link)
+                ContentActivity.start(activity,itemData.id,itemData.title,itemData.link)
             }
         }
 

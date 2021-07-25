@@ -1,5 +1,7 @@
 package com.asa.wanandroid.mvp.contract
 
+import com.asa.wanandroid.base.IModel
+import com.asa.wanandroid.base.IPresenter
 import com.asa.wanandroid.base.IView
 
 /**
@@ -9,7 +11,15 @@ import com.asa.wanandroid.base.IView
  */
 interface ContentContract {
 
-    interface View:IView{
+    interface View:CommonContract.View{
+
+    }
+
+    interface Presenter:IPresenter<View>{
+
+    }
+
+    interface Model:CommonContract.Model{
 
     }
 
