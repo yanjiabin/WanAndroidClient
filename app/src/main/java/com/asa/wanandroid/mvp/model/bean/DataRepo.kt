@@ -127,3 +127,4 @@ data class LoginData(
     @Json(name = "type") val type: Int,
     @Json(name = "username") val username: String
 )
+

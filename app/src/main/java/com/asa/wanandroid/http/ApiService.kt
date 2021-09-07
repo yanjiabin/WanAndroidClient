@@ -2,6 +2,7 @@ package com.asa.wanandroid.http
 
 import com.asa.wanandroid.mvp.model.bean.*
 import io.reactivex.Observable
+import io.reactivex.Observer
 import retrofit2.http.*
 
 interface ApiService {
@@ -90,4 +91,7 @@ interface ApiService {
      */
     @GET("user_article/list/{page}/json")
     fun getSquareList(@Path("page") page: Int): Observable<HttpResult<ArticleResponseBody>>
+
+    @GET("article/list/{page}/json")
+    fun getKnowledgeList(@Path("page") page: Int, @Query("cid") cid: Int): Observable<HttpResult<ArticleResponseBody>>
 }

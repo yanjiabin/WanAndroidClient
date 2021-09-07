@@ -137,7 +137,6 @@ class SquareFragment : BaseMvpFragment<SquareContract.View, SquareContract.Prese
 
     override fun hideLoading() {
         super.hideLoading()
-        Log.e("日志", "hideLoading: ")
         if (isRefresh) {
             mAdapter.setEnableLoadMore(true)
         }
