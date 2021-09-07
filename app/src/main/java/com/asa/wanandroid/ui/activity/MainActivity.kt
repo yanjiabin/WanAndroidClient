@@ -31,7 +31,6 @@ class MainActivity : BaseMvpActivity<MainContract.View,MainContract.Presenter>()
         val FRAGMENT_SQUARE =0x002
         val FRAGMENT_WECHAT =0x003
         val FRAGMENT_SYSTEM =0x004
-
     }
 
     private var mHomeFragment:HomeFragment?=null
@@ -153,7 +152,7 @@ class MainActivity : BaseMvpActivity<MainContract.View,MainContract.Presenter>()
             }
             FRAGMENT_WECHAT->{
                 if (mWechatFragment == null){
-                    mWechatFragment = WeChatFragment()
+                    mWechatFragment = WeChatFragment.getInstance()
                     beginTransaction.add(R.id.container,mWechatFragment!!,"wechat")
                 }else{
                     beginTransaction.show(mWechatFragment!!)

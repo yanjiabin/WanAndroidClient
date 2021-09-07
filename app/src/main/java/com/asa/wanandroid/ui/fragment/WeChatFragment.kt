@@ -10,6 +10,8 @@ import com.asa.wanandroid.mvp.model.bean.WXChapterBean
 import com.asa.wanandroid.mvp.presenter.WeChatPresenter
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.fragment_wechat.*
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 import java.util.*
 
 /**
@@ -83,7 +85,23 @@ class WeChatFragment:BaseMvpFragment<WeChatContract.View,WeChatContract.Presente
     }
 
     override fun showWXChapters(chapters: MutableList<WXChapterBean>) {
-        
+        chapters.let {
+            datas.addAll(it)
+            doAsync {
+                Thread.sleep(10)
+                uiThread {
+                    viewPager.run {
+                        adapter = viewPagerAdapter
+                        offscreenPageLimit = datas.size
+                    }
+                }
+            }
+        }
+        if (chapters.isEmpty()) {
+            mLayoutStatusView?.showEmpty()
+        } else {
+            mLayoutStatusView?.showContent()
+        }
     }
 
     override fun createPresenter(): WeChatContract.Presenter {

@@ -49,4 +49,8 @@ class KnowledgeFragment:BaseMvpFragment<KnowledgeContract.View,KnowledgeContract
     override fun showCancelCollectSuccess(success: Boolean) {
 
     }
+
+    override fun userEventBus(): Boolean {
+        return false
+    }
 }

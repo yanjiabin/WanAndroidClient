@@ -94,4 +94,12 @@ interface ApiService {
 
     @GET("article/list/{page}/json")
     fun getKnowledgeList(@Path("page") page: Int, @Query("cid") cid: Int): Observable<HttpResult<ArticleResponseBody>>
+
+    /**
+     * 获取公众号列表
+     * http://wanandroid.com/wxarticle/chapters/json
+     */
+    @GET("/wxarticle/chapters/json")
+    fun getWXChapters(): Observable<HttpResult<MutableList<WXChapterBean>>>
+
 }

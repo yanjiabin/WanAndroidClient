@@ -69,7 +69,6 @@ class HomeFragment : BaseMvpFragment<HomeContract.View, HomeContract.Presenter>(
     }
 
     override fun setArticles(articles: ArticleResponseBody) {
-        Log.e("日志", "setArticles: :${isRefresh}")
         articles.datas.let {
             homeAdapter.apply {
                 if (isRefresh){
@@ -143,7 +142,6 @@ class HomeFragment : BaseMvpFragment<HomeContract.View, HomeContract.Presenter>(
 
 
     override fun lazyLoad() {
-        Log.e("日志", "lazyLoad: ")
         mLayoutStatusView?.showLoading()
         mPresenter?.requestHomeData()
     }

@@ -45,7 +45,6 @@ abstract class BaseFragment : Fragment() {
     }
 
     private fun lazyLoadDataIfPrepare(){
-        Log.e("日志", "lazyLoadDataIfPrepare: ")
         if (userVisibleHint && isViewPrepare && !hasLoadData){
             lazyLoad()
             hasLoadData = true
